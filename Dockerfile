@@ -18,5 +18,6 @@ ARG PREFIX
 # Build the language files
 RUN for file in ./lang/*.ftl; do f=${file%.ftl}; cat $file | envsubst '$BOT_NAME:$PREFIX' > $f.o.ftl; echo "Built $f.o.ftl "; done
 
+RUN yarn build
 
-CMD [ "node", "-r", "esm", "src/index.js"]
+CMD [ "node", "-r", "esm", "dist/index.js"]
